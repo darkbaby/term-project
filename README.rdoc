@@ -1,3 +1,9 @@
+#Prach Panrit 5510613242
+#Boonnarit Sakboonyarat 5510613283
+#Tanakorn Lueangkajonvit 5510613309
+#Chotirote Kieadhamalaph 5510613358
+#link:https://boiling-atoll-2650.herokuapp.com
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
