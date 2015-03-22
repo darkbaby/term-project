@@ -1,0 +1,24 @@
+<html>
+    <head>
+    	<title>Add Room Form</title>
+    </head>
+    <body>
+        <%= form_tag("add_room", method: "post") do %>
+        <%= label_tag(:room_name, "Room Name:") %>
+        <%= text_field_tag(:room_name) %>
+        </br>
+        <%= label_tag(:building, "Building:") %>
+        <%= text_field_tag(:building) %>
+        </br>
+        <%= label_tag(:capacity, "Capacity:") %>
+        <%= text_field_tag(:capacity) %>
+        </br>
+        <%= label_tag(:tools, "Tools:") %>
+        <%= text_area_tag(:tools) %>
+        </br>
+        <%= submit_tag("Submit") %>
+        </br>
+        <% end %>
+        <%= link_to 'Back', rooms_index_path %>
+    </body>
+</html>

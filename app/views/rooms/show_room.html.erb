@@ -1,0 +1,28 @@
+<html>
+    <head>
+    	<title>Show Room</title>
+    </head>
+    <body>
+        <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Building</th>
+                <th>Tools</th>
+                <th>Capacity</th>
+            </tr>
+            <% @room.each do |r| %>
+            <tr>
+                <td><%= r.name %></td>
+                <td><%= r.building %></td>
+                <td><%= r.tools %></td>
+                <td><%= r.capacity %></td>
+                <td><%= button_to 'Delete', destroy_path(:id => r.id) %></td>
+            </tr>
+            <% end %>
+        </table>
+        <%= link_to 'Back', rooms_index_path %>
+    </body>
+</html>

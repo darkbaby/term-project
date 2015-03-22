@@ -1,0 +1,21 @@
+<html>
+    <head>
+    	<title>Add</title>
+    </head>
+    <body>
+        <%= form_tag("add_course", method: "get") do %>
+        <%= label_tag(:course,"Course") %>
+        <%= text_field_tag(:course) %>
+        </br>
+        <%= label_tag(:room_name, "Room Name:") %>
+        <%= text_field_tag(:room_name) %>
+        </br>
+        <%= label_tag(:day, "Day:") %>
+        <%= select_tag(:day, options_for_select([['Sunday', 1], ['Monday', 2],['Tuesday', 3],['Wednesday', 4],['Thursday', 5],['Friday', 6],['Saturday', 7]])) %>
+        <%= label_tag(:time, "Time:") %>
+        <%= select_tag(:day, options_for_select([['8.00-9.30', 1], ['9.30-11.00', 2],['11.00-12.30', 3],['13.30-15.00', 4],['15.00-16.30', 5]])) %>
+        </br>
+        <%= submit_tag("Submit") %>
+        <% end %>
+    </body>
+</html>

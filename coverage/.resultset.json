@@ -1,21 +1,122 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/term-project/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/ubuntu/workspace/term-project/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/app/controllers/rooms_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/app/models/rooms.rb": [
+        1,
         1,
         null
       ]
     },
-    "timestamp": 1424604296
+    "timestamp": 1426952885
   },
   "RSpec": {
     "coverage": {
+      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/app/controllers/rooms_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/app/models/rooms.rb": [
+        1,
+        1,
+        null
+      ]
     },
-    "timestamp": 1424604361
+    "timestamp": 1427044557
   }
 }
