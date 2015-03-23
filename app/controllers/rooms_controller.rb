@@ -29,8 +29,9 @@ class RoomsController < ApplicationController
   def add_course
   end
   
-  def destroy
-    rec = Rooms.find(params[:id])
+  def delete
+    c = params[:name]
+    rec = Rooms.find_by_name(c)
     rec.destroy
     flash[:notice] = "Room '#{rec.name}' deleted."
     redirect_to show_room_path

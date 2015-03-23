@@ -19,7 +19,7 @@
                 <td><%= r.building %></td>
                 <td><%= r.tools %></td>
                 <td><%= r.capacity %></td>
-                <td><%= button_to 'Delete', destroy_path(:id => r.id) %></td>
+                <td><%= button_to 'Delete', delete_path(:name => r.name), data: {confirm: "Are you sure?"} %></td>
             </tr>
             <% end %>
         </table>
