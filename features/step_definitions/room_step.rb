@@ -1,6 +1,6 @@
-Given /the following rooms exist/ do |rooms_table|
-  rooms_table.hashes.each do |name|
-    Rooms.create(name)
+Given /the following room exist/ do |room_table|
+  room_table.hashes.each do |name|
+    Room.create(name)
   end
   
 end

@@ -4,9 +4,9 @@ Feature: add room by admin
   #So that I can find movies with my favorite director
   #I want to include and serach on director information in movies I enter
   
-Background: rooms in database
+Background: room in database
 
-  Given the following rooms exist:
+  Given the following room exist:
   | name    | building | tools                | capacity |
   | ENGR315 | ENGR     | projector whiteboard |  50      |
   | ENGR316 | ENGR     | projector whiteboard |  50      |

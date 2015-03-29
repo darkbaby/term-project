@@ -13,14 +13,14 @@ class RoomsController < ApplicationController
     building = params[:building]
     tools = params[:tools]
     capacity = params[:capacity]
-    rec = Rooms.new(:name => name, :building => building , :tools => tools , :capacity => capacity)
+    rec = Room.new(:name => name, :building => building , :tools => tools , :capacity => capacity)
     rec.save
     flash[:notice] = "Room #{rec.name} was successfully created."
     redirect_to rooms_index_path
   end
   
   def show_room
-    @room = Rooms.find(:all)
+    @room = Room.find(:all)
   end
   
   def add_courseform
@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
   
   def delete
     c = params[:name]
-    rec = Rooms.find_by_name(c)
+    rec = Room.find_by_name(c)
     rec.destroy
     flash[:notice] = "Room '#{rec.name}' deleted."
     redirect_to show_room_path
