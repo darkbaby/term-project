@@ -6,10 +6,22 @@ class RoomsController < ApplicationController
   end
   
   def edit_roomform
-    @name = params[:room].name
-    @building = params[:building].building
-    @tools = params[:tools].tools
-    @capacity = params[:capacity].capacity
+    rec = Room.find_by_id(params[:id])
+    @id = rec.id
+    @name = rec.name
+    @building = rec.building
+    @tools = rec.tools
+    @capacity = rec.capacity
+  end
+  
+  def edit_room
+    rec = Room.find_by_id(params[:id])
+    rec.name = params[:room_name]
+    rec.building = params[:building]
+    rec.tools = params[:tools]
+    rec.capacity = params[:capacity]
+    rec.save
+    redirect_to show_room_path
   end
   
   def add_roomform

@@ -4,6 +4,7 @@
     </head>
     <body>
         <%= form_tag("edit_room", method: "post") do %>
+        <%= hidden_field_tag(:id,@id) %>
         <%= label_tag(:room_name, "Room Name:") %>
         <%= text_field_tag(:room_name,@name) %>
         </br>
