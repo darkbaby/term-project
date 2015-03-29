@@ -5,6 +5,13 @@ class RoomsController < ApplicationController
   def about
   end
   
+  def edit_roomform
+    @name = params[:room].name
+    @building = params[:building].building
+    @tools = params[:tools].tools
+    @capacity = params[:capacity].capacity
+  end
+  
   def add_roomform
   end
   
