@@ -6,7 +6,9 @@
         <% if flash[:notice] %>
             <div class="notice"><%= flash[:notice] %></div>
         <% end %>
-        <table>
+    <div class="media">
+        <div class="media-body">
+            <table class="table table-hover">
             <tr>
                 <th>Name</th>
                 <th>Building</th>
@@ -19,11 +21,14 @@
                 <td><%= r.building %></td>
                 <td><%= r.tools %></td>
                 <td><%= r.capacity %></td>
-                <td><%= button_to 'Edit', edit_roomform_path(:id => r.id), data: {confirm: "Are you sure?"} %></td>
-                <td><%= button_to 'Delete', delete_path(:name => r.name), data: {confirm: "Are you sure?"} %></td>
+                <td><%= button_to 'Edit', edit_roomform_path(:id => r.id), class: 'btn-mini btn-success', data: {confirm: "Are you sure?"} %></td>
+                <td><%= button_to 'Delete', delete_path(:name => r.name), class: 'btn-mini btn-danger', data: {confirm: "Are you sure?"} %></td>
             </tr>
             <% end %>
         </table>
+        </div>
+    </div>    
+        
         <%= link_to 'Back', rooms_index_path %>
     </body>
 </html>
