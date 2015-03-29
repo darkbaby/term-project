@@ -29,3 +29,5 @@ end
 gem 'jquery-rails'
 gem 'haml'
 gem 'haml-rails'
+
+gem 'bootstrap-sass', '~> 2.3.1.0'
