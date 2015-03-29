@@ -11,21 +11,55 @@ Background: room in database
   | ENGR315 | ENGR     | projector whiteboard |  50      |
   | ENGR316 | ENGR     | projector whiteboard |  50      |
   | ENGR317 | ENGR     | projector whiteboard |  50      |
-
+  
+  
 Scenario: add room to database
   When I go to the add_roomform page 
-  And  I fill in "Room Name" with "ENGR602-2"
+  And  I fill in "Room Name" with "ENGR602"
   And  I fill in "Building" with "ENGR"
   And  I fill in "Tools" with "projector whiteboard"
   And  I fill in "Capacity" with "200"
   When I press "Submit"
-  And  I should see "ENGR602-2"
+  And  I should see "successfully"
   
-Scenario: don't add room to database
+Scenario: room name blank
   When I go to the add_roomform page
-  And  I fill in "Room Name" with "ENGR602-3"
+  And  I fill in "Room Name" with ""
+   And  I fill in "Building" with "ENGR"
+  And  I fill in "Tools" with "projector whiteboard"
+  And  I fill in "Capacity" with "60"
+  When I press "Submit"
+  And  I should see "can't be blank"
+  
+Scenario: building blank
+  When I go to the add_roomform page
+  And  I fill in "Room Name" with "ENGR203"
+  And  I fill in "Building" with ""
+  And  I fill in "Tools" with "projector whiteboard"
+  And  I fill in "Capacity" with "60"
+  When I press "Submit"
+  And  I should see "can't be blank"
+  
+
+Scenario: capacity not a number
+  When I go to the add_roomform page
+  And  I fill in "Room Name" with "ENGR602-4"
   And  I fill in "Building" with "ENGR"
   And  I fill in "Tools" with "projector whiteboard"
-  And  I fill in "Capacity" with "200"
-  When I follow "Back"
-  And  I should not see "ENGR602-3"
+  And  I fill in "Capacity" with "sixty"
+  When I press "Submit"
+  And  I should see "is not a number"
+
+
+Scenario: delete room 
+ When I go to the show_room page
+ And I press "Delete_ENGR315"
+ Then I should see "Room 'ENGR315' deleted."
+ 
+
+Scenario: edit room 
+ When I go to the show_room page
+ And I press "Edit_ENGR317"
+ And  I fill in "Room Name" with "ENGR311"
+ When I press "Submit"
+ Then I should see "ENGR311"

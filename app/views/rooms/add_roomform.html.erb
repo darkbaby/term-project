@@ -4,14 +4,29 @@
     </head>
     <body>
         <%= form_tag("add_room", method: "post") do %>
-        <%= label_tag(:room_name, "Room Name:") %>
-        <%= text_field_tag(:room_name) %>
+        <% unless @rec.errors.empty? %>
+            <%= label_tag(:room_name, "Room Name: #{@rec.errors[:name].first}") %>
+            <%= text_field_tag(:room_name) %>
+        <% else %>
+            <%= label_tag(:room_name, "Room Name:") %>
+            <%= text_field_tag(:room_name) %>
+        <% end %>
         </br>
-        <%= label_tag(:building, "Building:") %>
-        <%= text_field_tag(:building) %>
+        <% unless @rec.errors.empty? %>
+            <%= label_tag(:building, "Building: #{@rec.errors[:building].first}") %>
+            <%= text_field_tag(:building) %>
+        <% else %>
+            <%= label_tag(:building, "Building:") %>
+            <%= text_field_tag(:building) %>
+        <% end %>
         </br>
-        <%= label_tag(:capacity, "Capacity:") %>
-        <%= text_field_tag(:capacity) %>
+        <% unless @rec.errors.empty? %>
+            <%= label_tag(:capacity, "Capacity: #{@rec.errors[:capacity].first}") %>
+            <%= text_field_tag(:capacity) %>
+        <% else %>
+            <%= label_tag(:capacity, "Capacity:") %>
+            <%= text_field_tag(:capacity) %>
+        <% end %>
         </br>
         <%= label_tag(:tools, "Tools:") %>
         <%= text_area_tag(:tools) %>

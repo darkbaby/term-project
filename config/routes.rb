@@ -7,7 +7,7 @@ root to: 'rooms#index'
   get 'rooms/add_courseform', :to => 'rooms#add_courseform' , :as => 'add_courseform'
   get 'rooms/show_room', :to => 'rooms#show_room' , :as => 'show_room'
   get 'rooms/show_course', :to => 'rooms#show_course' , :as => 'show_course'
-  post 'rooms/delete', :to => 'rooms#delete' , :as => 'delete'
+  post 'rooms/destroy', :to => 'rooms#destroy' , :as => 'destroy'
   post 'rooms/edit_roomform', :to => 'rooms#edit_roomform' , :as => 'edit_roomform'
   post 'rooms/edit_room', :to => 'rooms#edit_room' , :as => 'edit_room'
   # The priority is based upon order of creation:
