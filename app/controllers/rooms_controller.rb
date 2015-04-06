@@ -76,7 +76,7 @@ class RoomsController < ApplicationController
     @rec = Course.new(:cname => cname, :rname => rname , :day => day , :time => time)
     if(@rec.valid?)
       @rec.save
-      flash[:notice] = "Coure #{@rec.cname} was successfully add to #{@rec.rname}."
+      flash[:notice] = "Course #{@rec.cname} was successfully add to #{@rec.rname}."
       redirect_to rooms_index_path
     else
       render add_courseform_path
