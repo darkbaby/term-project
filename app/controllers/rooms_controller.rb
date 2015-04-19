@@ -68,17 +68,29 @@ class RoomsController < ApplicationController
     @rec = Course.new
   end
   
+  def detail_room
+    @recroom = Room.find_by_name(params[:name])
+    @reccourse = Course.find_all_by_rname(@recroom.name)
+  end
+  
   def add_course
     cname = params[:course]
     rname = params[:room_name]
     day = params[:day]
     time = params[:time]
-    @rec = Course.new(:cname => cname, :rname => rname , :day => day , :time => time)
-    if(@rec.valid?)
-      @rec.save
-      flash[:notice] = "Course #{@rec.cname} was successfully add to #{@rec.rname}."
-      redirect_to rooms_index_path
+    @reccheck = Course.where('rname = ? AND day = ? AND time = ?', rname, day,time)
+    @rec = Course.new
+    if(@reccheck.empty?)
+      @rec = Course.new(:cname => cname, :rname => rname , :day => day , :time => time)
+      if(@rec.valid?)
+        @rec.save
+        flash[:notice] = "Course #{@rec.cname} was successfully add to #{@rec.rname}."
+        redirect_to rooms_index_path
+      else
+        render add_courseform_path
+      end
     else
+      flash[:notice] = "This Room, This Day and This Time have been reserve. So u can't add this Course"
       render add_courseform_path
     end
   end
@@ -90,12 +102,10 @@ class RoomsController < ApplicationController
       flash[:notice] = "Room '#{@rec.name}' deleted."
       redirect_to show_room_path
     else
-      @rec = Course.find_by_id(params[:id])
+      @rec = Course.find(params[:id])
       @rec.destroy
       flash[:notice] = "Course '#{@rec.cname}' deleted."
       redirect_to show_course_path
     end
-      
   end
-  
 end

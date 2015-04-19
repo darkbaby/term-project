@@ -1,0 +1,116 @@
+<html>
+    <head>
+    	<title>Room Detail</title>
+    </head>
+    <body>
+        <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+    <div class="media">
+        <div class="media-body">
+            <div>
+                <h3>Room Name : <%= @recroom.name %></h3>
+                <h3>Building :  <%= @recroom.building %></h3>
+                <h3>Capacity :  <%= @recroom.capacity %></h3>
+                <h3>Tools :  <%= @recroom.tools %></h3>
+            </div>
+            
+            <table class="table table-hover">
+            <% for i in 1..8 do %>
+	            <% if(i==1) %>
+	            <tr>
+                    <th>Day</th>
+                    <th>8:00-9:30</th>
+                    <th>9:30-11:00</th>
+                    <th>11:00-12.30</th>
+                    <th>13:30-15:00</th>
+                    <th>15:00-16:30</th>
+                </tr>
+                <% else %>
+                <tr>
+                        <th>
+                        <% case i %>
+                        <% when 2 %>
+                        <%= "Monday" %>
+                        <% c = "Monday" %>
+                        <% when 3 %>
+                        <%= "Tuesday" %>
+                        <% c = "Tuesday" %>
+                        <% when 4 %>
+                        <%= "Wednesday" %>
+                        <% c = "Wednesday" %>
+                        <% when 5 %>
+                        <%= "Thursday" %>
+                        <% c = "Thursday" %>
+                        <% when 6 %>
+                        <%= "Friday" %>
+                        <% c = "Friday" %>
+                        <% when 7 %>
+                        <%= "Saturday" %>
+                        <% c = "Saturday" %>
+                        <% else %>
+                        <%= "Sunday" %>
+                        <% c = "Sunday" %>
+                        <% end %>
+                        </th>
+                        <% for j in 1..5 do %>
+                            <% state = 0 %>
+                            <th>
+                            <% case j %>
+                            <% when 1 %>
+                            <% @reccourse.each do |r| %>
+                            <% if(r.time == "8.00-9.30" && r.day == c) %>
+                                <%= r.cname %>
+                            <% state = 1 %>
+                                <% break %>
+                            <% end %>
+                            <% end %>
+                            <% when 2 %>
+                            <% @reccourse.each do |r| %>
+                            <% if(r.time == "9.30-11.00" && r.day == c) %>
+                                <%= r.cname %>
+                            <% state = 1 %>
+                                <% break %>
+                            <% end %>
+                            <% end %>
+                            <% when 3 %>
+                            <% @reccourse.each do |r| %>
+                            <% if(r.time == "11.00-12.30" && r.day == c) %>
+                                <%= r.cname %>
+                                <% state = 1 %>
+                                <% break %><%= "test" %>
+                            <% end %>
+                            <% end %>
+                            <% when 4 %>
+                            <% @reccourse.each do |r| %>
+                            <% if(r.time == "13.30-15.00" && r.day == c) %>
+                                <%= r.cname %>
+                                <% state = 1 %>
+                                <% break %>
+                            <% end %>
+                            <% end %>
+                            <% when 5 %>
+                            <% @reccourse.each do |r| %>
+                            <% if(r.time == "15.00-16.30" && r.day == c) %>
+                                <%= r.cname %>
+                                <% state = 1 %>
+                                <% break %>
+                            <% end %>
+                            <% end %>
+                            <% else %>
+                            <% end %>
+                            <% if(state == 0) %>
+                                <%= " " %>
+                            <% end %>
+                            </th>
+                                
+                        <% end %>
+                    
+                </tr>
+                <% end %>
+            <% end %>
+        </table>
+        </div>
+    </div>    
+    </body>
+</html>

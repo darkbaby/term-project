@@ -3,6 +3,9 @@
     	<title>Add</title>
     </head>
     <body>
+        <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
         <%= form_tag("add_course", method: "post") do %>
         <% unless @rec.errors.empty? %>
             <%= label_tag(:course,"Course:#{@rec.errors[:cname].first}") %>
@@ -12,16 +15,13 @@
             <%= text_field_tag(:course) %>
         <% end %>
         </br>
-        <% unless @rec.errors.empty? %>
-            <%= label_tag(:room_name, "Room Name:#{@rec.errors[:rname].first}") %>
-            <%= text_field_tag(:room_name) %>
-        <% else %>    
-            <%= label_tag(:room_name, "Room Name:") %>
-            <%= text_field_tag(:room_name) %>
-        <% end %>    
-        </br>
+        <%= label_tag(:room_name, "Room Name:") %>
+        <% roomname = Room.all.map { |r| [r.name, r.name] } %>
+        <%= select_tag(:room_name, options_for_select(roomname)) %>
         <%= label_tag(:day, "Day:") %>
-        <%= select_tag(:day, options_for_select([['Sunday', 'sunday'], ['Monday', 'monday'],['Tuesday', 'tuesday'],['Wednesday', 'wednesday'],['Thursday', 'thursday'],['Friday', 'friday'],['Saturday', 'saturday']])) %>
+        <%= select_tag(:day, options_for_select([
+        ['Sunday', 'Sunday'], ['Monday', 'Monday'],['Tuesday', 'Tuesday'],['Wednesday', 'Wednesday'],['Thursday', 'Tursday'],['Friday', 'Friday'],['Saturday', 'Saturday']
+        ])) %>
         <%= label_tag(:time, "Time:") %>
         <%= select_tag(:time, options_for_select([['8.00-9.30', '8.00-9.30'], ['9.30-11.00', '9.30-11.00'],['11.00-12.30', '11.00-12.30'],['13.30-15.00', '13.30-15.00'],['15.00-16.30', '15.00-16.30']])) %>
         </br>

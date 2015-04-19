@@ -19,14 +19,14 @@ describe RoomsController do
         end
     end
     
-    describe 'show_room' do
+    describe '#show_room' do
         it "is all room" do
             get :show_room
             response.should render_template 'show_room'
         end
     end
     
-    describe 'delete an existing room' do
+    describe '#destroy' do
         it "deletes the room" do 
             rec = Room.new(:name=>"ENGR322" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>2000)
             rec.save
@@ -50,4 +50,6 @@ describe RoomsController do
             response.should redirect_to(show_room_path)
         end
     end
+    
+    
 end

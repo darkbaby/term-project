@@ -21,6 +21,7 @@
                 <td><%= r.building %></td>
                 <td><%= r.tools %></td>
                 <td><%= r.capacity %></td>
+                <td><%= button_to 'Detail',detail_room_path(:name => r.name) , class: 'btn-mini btn-success'%></td>
                 <td><%= button_to 'Edit', edit_roomform_path(:id => r.id), class: 'btn-mini btn-success', data: {confirm: "Are you sure?"}, :id => "Edit_#{r.name}" %></td>
                 <td><%= button_to 'Delete', destroy_path(:name => r.name), class: 'btn-mini btn-danger', data: {confirm: "Are you sure?"}, :id => "Delete_#{r.name}" %></td>
             </tr>
