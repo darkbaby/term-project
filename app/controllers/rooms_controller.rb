@@ -71,6 +71,7 @@ class RoomsController < ApplicationController
   def detail_room
     @recroom = Room.find_by_name(params[:name])
     @reccourse = Course.find_all_by_rname(@recroom.name)
+    flash[:check] = @reccourse.count
   end
   
   def add_course

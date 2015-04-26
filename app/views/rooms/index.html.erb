@@ -2,9 +2,8 @@
     <head>
     </head>
     <body>
-        <% if flash[:notice] %>
+        <% if flash[:notice] && flash[:notice] != "This Room, This Day and This Time have been reserve. So u can't add this Course" %>
             <div class="notice"><%= flash[:notice] %></div>
         <% end %>
-
     </body>
 </html>

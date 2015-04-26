@@ -12,6 +12,9 @@ Background: room in database
   | ENGR316 | ENGR     | projector whiteboard |  50      |
   | ENGR317 | ENGR     | projector whiteboard |  50      |
   
+Scenario: show course should render page
+  When I go to the show_room page
+  Then I should see "ENGR317"
   
 Scenario: add room to database
   When I go to the add_roomform page 
@@ -25,7 +28,7 @@ Scenario: add room to database
 Scenario: room name blank
   When I go to the add_roomform page
   And  I fill in "Room Name" with ""
-   And  I fill in "Building" with "ENGR"
+  And  I fill in "Building" with "ENGR"
   And  I fill in "Tools" with "projector whiteboard"
   And  I fill in "Capacity" with "60"
   When I press "Submit"
@@ -63,3 +66,10 @@ Scenario: edit room
  And  I fill in "Room Name" with "ENGR311"
  When I press "Submit"
  Then I should see "ENGR311"
+ 
+Scenario: edit room (bad path)
+When I go to the show_room page
+ And I press "Edit_ENGR317"
+ And  I fill in "Room Name" with ""
+ When I press "Submit"
+ Then I should see "can't be blank"

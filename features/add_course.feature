@@ -3,10 +3,10 @@ Feature: add course by admin
 Background: course in database
   
   Given the following course exist
-  | cname  | rname   | day    | time          |
-  | cn202  | ENGR201 | Monday | '9.30-11.00'  |
-  | cn320  | ENGR316 | Monday | '13.30-15.00' |
-  | cn340  | ENGR507 | Tuesday| '11.00-12.30' |
+  | cname  | rname   | day    | time        |
+  | cn202  | ENGR201 | Monday | 9.30-11.00  |
+  | cn320  | ENGR316 | Monday | 13.30-15.00 |
+  | cn340  | ENGR507 | Tuesday| 11.00-12.30 |
   
   Given the following room exist
   | name    | building | tools                | capacity |
@@ -30,7 +30,20 @@ Scenario: course name blank
   And  I select "Wednesday" from "Day"
   And  I select "9.30-11.00" from "Time"
   When I press "Submit"
-  And  I should see "can't be blank" 
+  And  I should see "can't be blank"
+  
+Scenario: course time overlap
+  When I go to the add_courseform page 
+  And  I fill in "Course" with "cn302"
+  And  I select "ENGR316" from "Room Name"
+  And  I select "Monday" from "Day"
+  And  I select "13.30-15.00" from "Time"
+  When I press "Submit"
+  And  I should see "u can't add this Course"
+  
+Scenario: show course should render page
+  When I go to the show_course page
+  Then I should see "cn340"
   
 Scenario: delete course 
  When I go to the show_course page

@@ -4,7 +4,7 @@
     </head>
     <body>
         <% if flash[:notice] %>
-            <div class="notice"><%= flash[:notice] %></div>
+            <div class="notice"><%= "This Room, This Day and This Time have been reserve. So u can't add this Course" %></div>
         <% end %>
         <%= form_tag("add_course", method: "post") do %>
         <% unless @rec.errors.empty? %>
@@ -20,7 +20,7 @@
         <%= select_tag(:room_name, options_for_select(roomname)) %>
         <%= label_tag(:day, "Day:") %>
         <%= select_tag(:day, options_for_select([
-        ['Sunday', 'Sunday'], ['Monday', 'Monday'],['Tuesday', 'Tuesday'],['Wednesday', 'Wednesday'],['Thursday', 'Tursday'],['Friday', 'Friday'],['Saturday', 'Saturday']
+        ['Sunday', 'Sunday'], ['Monday', 'Monday'],['Tuesday', 'Tuesday'],['Wednesday', 'Wednesday'],['Thursday', 'Thursday'],['Friday', 'Friday'],['Saturday', 'Saturday']
         ])) %>
         <%= label_tag(:time, "Time:") %>
         <%= select_tag(:time, options_for_select([['8.00-9.30', '8.00-9.30'], ['9.30-11.00', '9.30-11.00'],['11.00-12.30', '11.00-12.30'],['13.30-15.00', '13.30-15.00'],['15.00-16.30', '15.00-16.30']])) %>

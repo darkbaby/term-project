@@ -20,11 +20,11 @@
 	            <% if(i==1) %>
 	            <tr>
                     <th>Day</th>
-                    <th>8:00-9:30</th>
-                    <th>9:30-11:00</th>
-                    <th>11:00-12.30</th>
-                    <th>13:30-15:00</th>
-                    <th>15:00-16:30</th>
+                    <th>8.00-9.30</th>
+                    <th>9.30-11.00</th>
+                    <th>11.00-12.30</th>
+                    <th>13.30-15.00</th>
+                    <th>15.00-16.30</th>
                 </tr>
                 <% else %>
                 <tr>
@@ -78,7 +78,7 @@
                             <% if(r.time == "11.00-12.30" && r.day == c) %>
                                 <%= r.cname %>
                                 <% state = 1 %>
-                                <% break %><%= "test" %>
+                                <% break %>
                             <% end %>
                             <% end %>
                             <% when 4 %>
@@ -112,5 +112,6 @@
         </table>
         </div>
     </div>    
+    <%= link_to 'Back', show_room_path %>
     </body>
 </html>

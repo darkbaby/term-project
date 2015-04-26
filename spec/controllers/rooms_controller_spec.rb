@@ -41,7 +41,6 @@ describe RoomsController do
             @rec.save
         end
         it 'should render edit room form' do
-            #RoomsController.stub(:edit_room).and_return(my_room)
             post :edit_roomform, {:id => @rec.id}
             response.should render_template 'edit_roomform'
         end
@@ -49,7 +48,27 @@ describe RoomsController do
             post :edit_room, {:id=>@rec.id, :room_name=>"ENGR100" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>100}
             response.should redirect_to(show_room_path)
         end
+        it 'should not edit a room' do
+            post :edit_room, {:id=>@rec.id, :room_name=>"" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>100}
+            response.should render_template 'edit_roomform'
+        end
     end
     
-    
+    describe '#detail_room' do
+        before(:each) do
+            @rec = Room.new(:name=>"ENGR322" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>2000)
+            @rec.save
+            @rec2 = Course.new(:cname=>"CN322",:rname=>"ENGR322",:day=>"Monday",:time=>"8.00-9.30")
+            @rec2.save
+        end
+        it 'should render detail room' do
+            post :detail_room, {:name => @rec.name}
+            response.should render_template 'detail_room'
+        end
+        it 'course in detail room should equal' do
+            post :detail_room, {:name => @rec.name}
+            dump = Course.find_all_by_rname(@rec.name).count
+            expect(dump).to be == flash[:check]
+        end    
+    end
 end
