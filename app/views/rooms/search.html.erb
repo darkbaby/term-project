@@ -1,0 +1,44 @@
+<html>
+    <head>
+    	<title>Add Room Form</title>
+    </head>
+    <body>
+        
+        <% if flash[:notice2] %>
+            <div class="notice"><%= flash[:notice2] %></div>
+        <% end %>
+        <div class="media">
+            <divclass="media-body">
+                <%= form_tag("search", method: "post") do %>
+                    <%= label_tag(:room_name, "Search by Room Name:") %>
+                    <%= text_field_tag(:room_name) %>
+                    <%= submit_tag("SEARCH")%>
+                <% end %>
+            </div>
+        </div>
+    <div class="media">
+        <div class="media-body">
+            <table class="table table-hover">
+            <tr>
+                <th>Name</th>
+                <th>Building</th>
+                <th>Tools</th>
+                <th>Capacity</th>
+            </tr>
+            <% @room.each do |r| %>
+            <tr>
+                <td><%= r.name %></td>
+                <td><%= r.building %></td>
+                <td><%= r.tools %></td>
+                <td><%= r.capacity %></td>
+                <td><%= button_to 'Detail',detail_room_path(:name => r.name) , class: 'btn-mini btn-success', :id => "Detail_#{r.name}"%></td>
+                <td><%= button_to 'Edit', edit_roomform_path(:id => r.id), class: 'btn-mini btn-success', data: {confirm: "Are you sure?"}, :id => "Edit_#{r.name}" %></td>
+                <td><%= button_to 'Delete', destroy_path(:name => r.name), class: 'btn-mini btn-danger', data: {confirm: "Are you sure?"}, :id => "Delete_#{r.name}" %></td>
+            </tr>
+            <% end %>
+        </table>
+        </div>
+    </div>
+        <%= link_to 'Back', rooms_index_path %>
+    </body>
+</html>

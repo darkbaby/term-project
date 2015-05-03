@@ -5,6 +5,20 @@ class RoomsController < ApplicationController
   def about
   end
   
+  def search_form
+  end
+  
+  def search
+    if(params[:room_name] == "")
+      flash[:notice2] = "Search is empty"
+      redirect_to search_form_path
+    else
+      @room_name = params[:room_name]
+      @room = Room.where("name LIKE :name1",{:name1 => "%#{@room_name}%"})
+      flash[:notice2] = "Search is successfully"
+    end
+  end
+  
   def edit_roomform
     @rec = Room.find_by_id(params[:id])
     @id = @rec.id

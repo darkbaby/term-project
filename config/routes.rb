@@ -1,6 +1,8 @@
 TermProject::Application.routes.draw do
 root to: 'rooms#index'
   get "rooms/index"
+  get 'rooms/search_form', :to => 'rooms#search_form' , :as => 'search_form'
+  post 'rooms/search', :to => 'rooms#search' , :as => 'search'
   get 'rooms/about', :to => 'rooms#about' , :as => 'about'
   get 'rooms/add_roomform', :to => 'rooms#add_roomform' , :as => 'add_roomform'
   post 'rooms/add_room', :to => 'rooms#add_room' , :as => 'add_room'

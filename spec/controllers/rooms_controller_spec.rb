@@ -71,4 +71,17 @@ describe RoomsController do
             expect(dump).to be == flash[:check]
         end    
     end
+    
+    describe '#search_room' do
+        it 'should search room' do
+            post :search, {:name => "ENGR"}
+            flash[:notice2] = "Search is successfully"
+        end
+        it 'should not be empty ' do
+            post :search, {:name => ""}
+            flash[:notice2] = "Search is empty"
+        end
+    end
+    
+            
 end
