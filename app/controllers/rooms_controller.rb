@@ -17,6 +17,8 @@ class RoomsController < ApplicationController
   def index
     if(params[:state] == "annoy")
       session[:cur] = "annoy"
+    elsif(session[:cur]=="admin")
+      redirect_to firstform_path
     end
   end
   
