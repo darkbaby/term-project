@@ -17,6 +17,7 @@ Scenario: show course should render page
   Then I should see "ENGR317"
   
 Scenario: add room to database
+  Given I am logged in as "admin"
   When I go to the add_roomform page 
   And  I fill in "Room Name" with "ENGR602"
   And  I fill in "Building" with "ENGR"
@@ -26,6 +27,7 @@ Scenario: add room to database
   And  I should see "successfully"
   
 Scenario: room name blank
+  Given I am logged in as "admin"
   When I go to the add_roomform page
   And  I fill in "Room Name" with ""
   And  I fill in "Building" with "ENGR"
@@ -35,6 +37,7 @@ Scenario: room name blank
   And  I should see "can't be blank"
   
 Scenario: building blank
+  Given I am logged in as "admin"
   When I go to the add_roomform page
   And  I fill in "Room Name" with "ENGR203"
   And  I fill in "Building" with ""
@@ -45,6 +48,7 @@ Scenario: building blank
   
 
 Scenario: capacity not a number
+  Given I am logged in as "admin"
   When I go to the add_roomform page
   And  I fill in "Room Name" with "ENGR602-4"
   And  I fill in "Building" with "ENGR"
@@ -54,13 +58,15 @@ Scenario: capacity not a number
   And  I should see "is not a number"
 
 
-Scenario: delete room 
+Scenario: delete room
+ Given I am logged in as "admin"
  When I go to the show_room page
  And I press "Delete_ENGR315"
  Then I should see "Room 'ENGR315' deleted."
  
 
-Scenario: edit room 
+Scenario: edit room
+ Given I am logged in as "admin"
  When I go to the show_room page
  And I press "Edit_ENGR317"
  And  I fill in "Room Name" with "ENGR311"
@@ -68,7 +74,8 @@ Scenario: edit room
  Then I should see "ENGR311"
  
 Scenario: edit room (bad path)
-When I go to the show_room page
+ Given I am logged in as "admin"
+ When I go to the show_room page
  And I press "Edit_ENGR317"
  And  I fill in "Room Name" with ""
  When I press "Submit"

@@ -2,6 +2,22 @@ require 'rails_helper'
 require 'spec_helper'
 
 describe RoomsController do
+    
+    describe '#index' do
+        it 'should redirect home page but go on index' do
+            session[:cur] = "admin"
+            get :index
+            response.should redirect_to(firstform_path)
+        end
+        it 'should render index when u are annoymous' do
+            get :index, {:state => "annoy"}
+            response.should render_template 'index'
+        end
+        it 'should cannot login if wrong username or password' do
+            get :firstform, {:username => "admin" , :password => "yoyo"}
+            response.should redirect_to(root_path)
+        end
+    end
 
     describe '#add_room' do
         it 'should render add room form page' do

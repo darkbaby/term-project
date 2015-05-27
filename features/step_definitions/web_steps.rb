@@ -41,6 +41,13 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end
 
+Given /^I am logged in as "(.*)"$/ do |s|
+  visit("/rooms/index")
+  fill_in("username", :with => s)
+  fill_in("password", :with => s)
+  click_button("Submit")
+end
+
 Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end

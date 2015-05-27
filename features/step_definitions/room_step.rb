@@ -4,5 +4,3 @@ Given /the following room exist/ do |room_table|
   end
   
 end
-
-
