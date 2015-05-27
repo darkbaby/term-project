@@ -23,10 +23,10 @@
         </br>
         <% unless %>
             <%= label_tag(:password) %>
-            <%= text_field_tag(:password) %>
+            <%= password_field_tag(:password) %>
         <% else %>
             <%= label_tag(:password, "Password:") %>
-            <%= text_field_tag(:password) %>
+            <%= password_field_tag(:password) %>
         <% end %>
         </br>
         <%= submit_tag 'Submit', class: 'btn btn-warning' %>
