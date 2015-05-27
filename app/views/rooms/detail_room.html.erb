@@ -61,7 +61,7 @@
                             <% case j %>
                             <% when 1 %>
                             <% @reccourse.each do |r| %>
-                            <% if(r.time == "8.00-9.30" && r.day == c) %>
+                            <% if(r.time == "08.00-09.30" && r.day == c) %>
                                 <td style="text-align:center; background-color:#DDD; border-style: solid;
     border-color: black; border-width:1px"><%= r.cname %></td>
                                 <% j=j+1 %>
@@ -71,14 +71,14 @@
                             <% end %>
                             <% when 2 %>
                             <% @reccourse.each do |r| %>
-                            <% if(r.time == "9.30-12.30" && r.day == c) %>
+                            <% if(r.time == "09.30-12.30" && r.day == c) %>
                                 <td colspan="2" style="text-align:center; background-color:#EEE; border-style: solid;
     border-color: black; border-width:1px" ><%= r.cname %></td>
                                 <% j=j+2 %>
                                 <% state = 1 %>
                                 <% break %>
                             <% end %>
-                            <% if(r.time == "9.30-11.00" && r.day == c) %>
+                            <% if(r.time == "09.30-11.00" && r.day == c) %>
                                 <td style="text-align:center; background-color:#DDD; border-style: solid;
     border-color: black; border-width:1px"><%= r.cname %></td>
                                 <% j=j+1 %>
