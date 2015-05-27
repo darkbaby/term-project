@@ -1,6 +1,12 @@
 TermProject::Application.routes.draw do
-root to: 'rooms#index'
-  get "rooms/index"
+root :to => 'rooms#index'
+  
+  post 'rooms/index'
+  get 'rooms/index'
+  post 'firstform' , :to => 'rooms#firstform' , :as => 'firstform'
+  get 'firstform' , :to => 'rooms#firstform' , :as => 'firstform'
+  post 'rooms/firstform' , :to => 'rooms#firstform' , :as => 'firstform'
+  get 'rooms/firstform' , :to => 'rooms#firstform' , :as => 'firstform'
   get 'rooms/search_form', :to => 'rooms#search_form' , :as => 'search_form'
   post 'rooms/search', :to => 'rooms#search' , :as => 'search'
   get 'rooms/about', :to => 'rooms#about' , :as => 'about'
@@ -13,6 +19,7 @@ root to: 'rooms#index'
   post 'rooms/detail_room', :to => 'rooms#detail_room' , :as => 'detail_room'
   post 'rooms/destroy', :to => 'rooms#destroy' , :as => 'destroy'
   post 'rooms/edit_roomform', :to => 'rooms#edit_roomform' , :as => 'edit_roomform'
+  get 'rooms/edit_roomform', :to => 'rooms#edit_roomform' , :as => 'edit_roomform'
   post 'rooms/edit_room', :to => 'rooms#edit_room' , :as => 'edit_room'
   # The priority is based upon order of creation:
   # first created -> highest priority.

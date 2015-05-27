@@ -3,6 +3,7 @@
     	<title>Room Detail</title>
     </head>
     <body>
+    <div class="container">
         <% if flash[:notice] %>
             <div class="notice"><%= flash[:notice] %></div>
         <% end %>
@@ -15,7 +16,7 @@
                 <h3>Tools :  <%= @recroom.tools %></h3>
             </div>
             
-            <table class="table table-hover">
+            <table class="table table-bordered table-hover">
             <% for i in 1..8 do %>
 	            <% if(i==1) %>
 	            <tr>
@@ -53,46 +54,71 @@
                         <% c = "Sunday" %>
                         <% end %>
                         </th>
-                        <% for j in 1..5 do %>
+                        <% j=1 %>
+                        <% while j <= 5 do %>
                             <% state = 0 %>
-                            <th>
+                            
                             <% case j %>
                             <% when 1 %>
                             <% @reccourse.each do |r| %>
                             <% if(r.time == "8.00-9.30" && r.day == c) %>
-                                <%= r.cname %>
-                            <% state = 1 %>
+                                <td style="text-align:center; background-color:#DDD; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
+                                <% j=j+1 %>
+                                <% state = 1 %>
                                 <% break %>
                             <% end %>
                             <% end %>
                             <% when 2 %>
                             <% @reccourse.each do |r| %>
+                            <% if(r.time == "9.30-12.30" && r.day == c) %>
+                                <td colspan="2" style="text-align:center; background-color:#EEE; border-style: solid;
+    border-color: black; border-width:1px" ><%= r.cname %></td>
+                                <% j=j+2 %>
+                                <% state = 1 %>
+                                <% break %>
+                            <% end %>
                             <% if(r.time == "9.30-11.00" && r.day == c) %>
-                                <%= r.cname %>
-                            <% state = 1 %>
+                                <td style="text-align:center; background-color:#DDD; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
+                                <% j=j+1 %>
+                                <% state = 1 %>
                                 <% break %>
                             <% end %>
                             <% end %>
                             <% when 3 %>
                             <% @reccourse.each do |r| %>
                             <% if(r.time == "11.00-12.30" && r.day == c) %>
-                                <%= r.cname %>
+                                <td style="text-align:center; background-color:#DDD; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
+                                <% j=j+1 %>
                                 <% state = 1 %>
                                 <% break %>
                             <% end %>
                             <% end %>
                             <% when 4 %>
                             <% @reccourse.each do |r| %>
-                            <% if(r.time == "13.30-15.00" && r.day == c) %>
-                                <%= r.cname %>
+                            <% if(r.time == "13.30-16.30" && r.day == c) %>
+                                <td colspan="2" style="text-align:center; background-color:#EEE; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
                                 <% state = 1 %>
+                                <% j=j+2 %>
+                                <% break %>
+                            <% end %>
+                            <% if(r.time == "13.30-15.00" && r.day == c) %>
+                                <td style="text-align:center; background-color:#DDD; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
+                                <% state = 1 %>
+                                <% j=j+1 %>
                                 <% break %>
                             <% end %>
                             <% end %>
                             <% when 5 %>
                             <% @reccourse.each do |r| %>
                             <% if(r.time == "15.00-16.30" && r.day == c) %>
-                                <%= r.cname %>
+                                <td style="text-align:center; background-color:#DDD; border-style: solid;
+    border-color: black; border-width:1px"><%= r.cname %></td>
+                                <% j=j+1 %>
                                 <% state = 1 %>
                                 <% break %>
                             <% end %>
@@ -100,9 +126,10 @@
                             <% else %>
                             <% end %>
                             <% if(state == 0) %>
-                                <%= " " %>
+                                <% j=j+1 %>
+                                <td><%= " " %></td>
                             <% end %>
-                            </th>
+                            
                                 
                         <% end %>
                     
@@ -112,6 +139,7 @@
         </table>
         </div>
     </div>    
-    <%= link_to 'Back', show_room_path %>
+    <%= button_to 'Back',firstform_path , class: 'btn btn-inverse'%>
+    </div>
     </body>
 </html>

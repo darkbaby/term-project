@@ -1,9 +1,38 @@
+
+
 <html>
     <head>
     </head>
     <body>
-        <% if flash[:notice] && flash[:notice] != "This Room, This Day and This Time have been reserve. So u can't add this Course" %>
-            <div class="notice"><%= flash[:notice] %></div>
+        <div class="container">
+            
+        <div>
+        	<h1>Room Management</h1>
+        </div>
+        <% if flash[:login] %>
+            <div class="notice"><%= flash[:login] %></div>
         <% end %>
+        <%= form_tag("firstform", method: "post") do %>
+        <% unless %>
+            <%= label_tag(:username) %>
+            <%= text_field_tag(:username) %>
+        <% else %>
+            <%= label_tag(:username, "Username:") %>
+            <%= text_field_tag(:username) %>
+        <% end %>
+        </br>
+        <% unless %>
+            <%= label_tag(:password) %>
+            <%= text_field_tag(:password) %>
+        <% else %>
+            <%= label_tag(:password, "Password:") %>
+            <%= text_field_tag(:password) %>
+        <% end %>
+        </br>
+        <%= submit_tag 'Submit', class: 'btn btn-warning' %>
+        </br>
+        <% end %>
+        <%= button_to 'Guest', firstform_path(:ses => "user") , class: 'btn-mini btn-danger', data: {confirm: "Are you sure?"}, :id => "Guest" %>
+    </div>
     </body>
 </html>

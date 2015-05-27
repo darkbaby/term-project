@@ -9,7 +9,6 @@ describe RoomsController do
             response.should render_template 'add_roomform'
         end
         it 'should add a new room' do
-            #RoomsController.stub(:add_room).and_return(my_room)
             post :add_room, {:id=>'100', :room_name=>"ENGR322" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>2000}
             flash[:notice].should_not be_nil
         end
@@ -73,13 +72,19 @@ describe RoomsController do
     end
     
     describe '#search_room' do
-        it 'should search room' do
-            post :search, {:name => "ENGR"}
-            flash[:notice2] = "Search is successfully"
+        before(:each) do
+            @rec = Room.new(:name=>"ENGR322" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>2000)
+            @rec.save
         end
-        it 'should not be empty ' do
-            post :search, {:name => ""}
-            flash[:notice2] = "Search is empty"
+        it 'should search room' do
+            post :search, {:room_name => "ENGR"}
+            response.should render_template 'search'
+            flash[:notice2].should_not be_nil
+        end
+        it 'should not be empty' do
+            post :search, {:room_name => ""}
+            response.should redirect_to(search_form_path)
+            flash[:notice2].should_not be_nil
         end
     end
     

@@ -3,19 +3,21 @@
     	<title>Add Room Form</title>
     </head>
     <body>
-        
+    <div class="container">
         <% if flash[:notice2] %>
             <div class="notice"><%= flash[:notice2] %></div>
         <% end %>
+        
         <div class="media">
-            <divclass="media-body">
+            <div class="media-body">
                 <%= form_tag("search", method: "post") do %>
                     <%= label_tag(:room_name, "Search by Room Name:") %>
                     <%= text_field_tag(:room_name) %>
-                    <%= submit_tag("SEARCH")%>
+                    <%= submit_tag 'SEARCH', class: 'btn btn-info'%>
                 <% end %>
             </div>
         </div>
+        
     <div class="media">
         <div class="media-body">
             <table class="table table-hover">
@@ -38,7 +40,7 @@
             <% end %>
         </table>
         </div>
+        <%= button_to 'Back',firstform_path , class: 'btn btn-inverse'%>
     </div>
-        <%= link_to 'Back', rooms_index_path %>
     </body>
 </html>

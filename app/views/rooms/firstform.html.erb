@@ -1,0 +1,12 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div class="container">
+        
+        <% if flash[:notice] && flash[:notice] != "This Room, This Day and This Time have been reserve. So u can't add this Course" %>
+            <div class="notice"><%= flash[:notice] %></div>
+        <% end %>
+        </div>
+    </body>
+</html>

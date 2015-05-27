@@ -14,23 +14,30 @@ describe RoomsController do
         before(:each) do
             @rec = Room.new(:name=>"ENGR316" ,:building=>"ENGR" ,:tools=>"YOYOYO" ,:capacity=>2000)
             @rec.save
-            @rec2 = Course.new(:rname=>"ENGR316" ,:cname=>"CN666" ,:day=>"Monday" ,:time=>"8.00-9.30")
+            @rec2 = Course.new(:rname=>"ENGR316" ,:cname=>"CN666" ,:day=>"Monday" ,:time=>"11.00-12.30")
             @rec2.save
+            @rec3 = Course.new(:rname=>"ENGR316" ,:cname=>"CN667" ,:day=>"Monday" ,:time=>"15.00-16.30")
+            @rec3.save
         end
         it 'should render add course form page' do
             get :add_courseform
             response.should render_template 'add_courseform'
         end
         it 'should add a new course' do
-            post :add_course, {:course=>"cn320" ,:room_name=>"ENGR316" ,:day=>"Monday" ,:time=>"13.30-15.00"}
+            post :add_course, {:course=>"cn320" ,:room_name=>"ENGR316" ,:day=>"Friday" ,:time=>"08.00-09.30"}
             flash[:notice].should_not be_nil
         end
         it 'should dont add a new course(name blank)' do
-            post :add_course, {:course=>"" ,:room_name=>"ENGR316" ,:day=>"Monday" ,:time=>"13.30-15.00"}
+            post :add_course, {:course=>"" ,:room_name=>"ENGR316" ,:day=>"Wednesday" ,:time=>"09.30-11.00"}
             response.should render_template 'add_courseform'
         end
         it 'should dont add a new course(time overlap)' do
-            post :add_course, {:course=>"CN700" ,:room_name=>"ENGR316" ,:day=>"Monday" ,:time=>"8.00-9.30"}
+            post :add_course, {:course=>"CN700" ,:room_name=>"ENGR316" ,:day=>"Monday" ,:time=>"13.30-16.30"}
+            response.should render_template 'add_courseform'
+            flash[:notice].should_not be_nil
+        end
+        it 'should dont add a new course(time overlap2)' do
+            post :add_course, {:course=>"CN701" ,:room_name=>"ENGR316" ,:day=>"Monday" ,:time=>"09.30-12.30"}
             response.should render_template 'add_courseform'
             flash[:notice].should_not be_nil
         end

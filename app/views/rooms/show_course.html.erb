@@ -3,12 +3,13 @@
     	<title>Show Room</title>
     </head>
     <body>
+        <div class="container">
         <% if flash[:notice] %>
             <div class="notice"><%= flash[:notice] %></div>
         <% end %>
     <div class="media">
         <div class="media-body">
-            <table class="table table-hover">
+            <table class="table table-bordered table-hover">
             <tr>
                 <th>Course</th>
                 <th>Room</th>
@@ -21,13 +22,16 @@
                 <td><%= c.rname %></td>
                 <td><%= c.day %></td>
                 <td><%= c.time %></td>
+                <% if (session[:cur] == "admin") %>
                 <td><%= button_to 'Delete', destroy_path(:id => c.id), class: 'btn-mini btn-danger', data: {confirm: "Are you sure?"}, :id => "Delete_#{c.cname}" %></td>
+                <% end %>
             </tr>
             <% end %>
         </table>
         </div>
     </div>    
         
-        <%= link_to 'Back', rooms_index_path %>
+        <%= button_to 'Back',firstform_path , class: 'btn btn-inverse'%>
+        </div>
     </body>
 </html>

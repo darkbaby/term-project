@@ -4,7 +4,7 @@ Background: course in database
   
   Given the following course exist
   | cname  | rname   | day    | time        |
-  | CN202  | ENGR201 | Monday | 9.30-11.00  |
+  | CN202  | ENGR201 | Monday | 09.30-11.00  |
   | CN320  | ENGR316 | Monday | 13.30-15.00 |
   | CN340  | ENGR507 | Tuesday| 11.00-12.30 |
   

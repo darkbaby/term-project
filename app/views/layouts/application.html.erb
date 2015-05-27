@@ -8,16 +8,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  
   <div class="container">
-    <ul class="nav nav-tabs">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'Add Room', add_roomform_path %></li>
-        <li><%= link_to 'Add Course', add_courseform_path %></li>
-        <li><%= link_to 'Show Room' , show_room_path %></li>
-        <li><%= link_to 'Show Course' , show_course_path %></li>
-        <li><%= link_to 'Search' , search_form_path %></li>
-        <li><%= link_to 'About', about_path %></li>
+    <% if (session[:cur] == "admin") %>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="<%= 'active' if session[:page]=="home" %>"><%= link_to 'Home', firstform_path %></li>
+        <li class="<%= 'active' if session[:page]=="add_room" %>"><%= link_to 'Add Room', add_roomform_path %></li>
+        <li class="<%= 'active' if session[:page]=="add_course" %>"><%= link_to 'Add Course', add_courseform_path %></li>
+        <li class="<%= 'active' if session[:page]=="show_room" %>"><%= link_to 'Show Room' , show_room_path %></li>
+        <li class="<%= 'active' if session[:page]=="show_course" %>"><%= link_to 'Show Course' , show_course_path %></li>
+        <li class="<%= 'active' if session[:page]=="search" %>"><%= link_to 'Search' , search_form_path %></li>
+        <li class="<%= 'active' if session[:page]=="about" %>"><%= link_to 'About', about_path %></li>
+        <li><%= link_to 'Logout', rooms_index_path(:state => "annoy")%></li>
     </ul>
+    
+    <% elsif (session[:cur] == "user") %>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="<%= 'active' if session[:page]=="home" %>"><%= link_to 'Home', firstform_path %></li>
+        <li class="<%= 'active' if session[:page]=="show_room" %>"><%= link_to 'Show Room' , show_room_path %></li>
+        <li class="<%= 'active' if session[:page]=="show_course" %>"><%= link_to 'Show Course' , show_course_path %></li>
+        <li class="<%= 'active' if session[:page]=="search" %>"><%= link_to 'Search' , search_form_path %></li>
+        <li class="<%= 'active' if session[:page]=="about" %>"><%= link_to 'About', about_path %></li>
+        <li class="<%= 'active' if session[:page]=="login" %>"><%= link_to 'Login', rooms_index_path(:state => "annoy")%></li>
+    </ul>
+    <% else %>
+    <% end %>
   </div>
         
 <%= yield %>

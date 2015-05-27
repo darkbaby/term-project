@@ -1,8 +1,10 @@
 <html>
     <head>
     	<title>Add Room Form</title>
+ 
     </head>
     <body>
+    <div class="container">
         <%= form_tag("add_room", method: "post") do %>
         <% unless @rec.errors.empty? %>
             <%= label_tag(:room_name, "Room Name: #{@rec.errors[:name].first}") %>
@@ -31,9 +33,10 @@
         <%= label_tag(:tools, "Tools:") %>
         <%= text_area_tag(:tools) %>
         </br>
-        <%= submit_tag("Submit") %>
+        <%= submit_tag 'Submit', class: 'btn btn-warning'%>
         </br>
         <% end %>
-        <%= link_to 'Back', rooms_index_path %>
+        <%= button_to 'Back',firstform_path , class: 'btn btn-inverse'%>
+    </div>
     </body>
 </html>
